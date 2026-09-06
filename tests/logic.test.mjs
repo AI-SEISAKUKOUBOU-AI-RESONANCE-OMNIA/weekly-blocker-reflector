@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {reflect,reasons} from '../public/logic.mjs';
+test('empty and overlong input are rejected',()=>{for(const text of ['', ' \n ', 'a'.repeat(501)])assert.throws(()=>reflect({text}));assert.doesNotThrow(()=>reflect({text:'a'.repeat(500)}));});
+test('all explicit reasons yield one action and take precedence over text',()=>{for(const reason of reasons){const r=reflect({text:'返信が来ず時間も足りなかった',reason});assert.equal(r.reason,reason);assert.equal(typeof r.action,'string');assert.ok(r.action.endsWith('。'));}});
+test('one signal suggests a reason, multiple signals keep cause open',()=>{assert.equal(reflect({text:'企画を決められなかった'}).reason,'決められない');assert.equal(reflect({text:'返信がなく忙しかった'}).reason,'その他');assert.equal(reflect({text:'なんとなく止まった'}).reason,'その他');});
+test('all domains work and malformed options are rejected',()=>{for(const domain of ['仕事','お金','人間関係','その他'])assert.equal(reflect({domain,text:'困った'}).domain,domain);assert.throws(()=>reflect({domain:'bad',text:'x'}));assert.throws(()=>reflect({reason:'bad',text:'x'}));});
+test('quoted text remains literal, Unicode truncation preserves characters',()=>{assert.equal(reflect({text:'<img src=x onerror=alert(1)>'}).quote,'<img src=x onerror=alert(1)>');assert.equal(Array.from(reflect({text:'🌱'.repeat(100)}).quote).length,91);});

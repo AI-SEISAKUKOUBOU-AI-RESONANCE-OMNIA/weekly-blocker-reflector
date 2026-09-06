@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>止まりポイント整理｜1問リフレクター</title>
+  <meta name="description" content="今週どこで止まっていた？ ひとつ書いて、来週の次の一手をひとつに。無料・ログイン不要。入力は外部送信・保存しません。">
+  <meta name="theme-color" content="#174d43"><link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css"><script type="module" src="./app.js"></script>
+</head>
+<body>
+<div class="shell">
+  <header><a class="brand" href="https://ai-seisakukobo-resonance-omnia.com/ja/apps"><span class="brand-mark" aria-hidden="true">↗</span> AI RESONANCE OMNIA</a><span class="header-note">小さな道具、大きすぎない一歩。</span></header>
+  <main>
+    <section class="intro" aria-labelledby="title"><p class="eyebrow">WEEKLY REFLECTION <span>／ 1問リフレクター</span></p><h1 id="title">止まりポイントを、<br><em>次の一手</em>に。</h1><p class="lead">今週、どこで止まっていた？<br>ひとつ書いて、来週の入口をひとつに絞りましょう。</p><div class="privacy"><span aria-hidden="true">◈</span> 入力はこの画面だけ。外部送信・保存はしません。</div></section>
+    <div class="workspace">
+      <section class="input-card" aria-label="止まりポイントの入力">
+        <form id="reflect-form" novalidate autocomplete="off">
+          <fieldset><legend><span class="step">01</span> どの分野のこと？</legend><div class="choices domains"><label><input type="radio" name="domain" value="仕事" checked><span>仕事</span></label><label><input type="radio" name="domain" value="お金"><span>お金</span></label><label><input type="radio" name="domain" value="人間関係"><span>人間関係</span></label><label><input type="radio" name="domain" value="その他"><span>その他</span></label></div></fieldset>
+          <div class="question"><label for="blocker"><span class="step">02</span> どこで止まっていた？</label><p id="input-hint">一場面だけで大丈夫。きれいな文章でなくてもOK。</p><textarea id="blocker" name="blocker" rows="4" maxlength="500" placeholder="例：企画の案が3つあって、どれを進めるか決められなかった。" aria-describedby="input-hint error count"></textarea><div class="under-input"><button type="button" id="example">例を入れて試す</button><span id="count">0 / 500</span></div><p id="error" role="alert" hidden></p></div>
+          <fieldset class="reason-field"><legend><span class="step">03</span> 近いものがあれば <small>任意</small></legend><div class="choices reasons"><label><input type="radio" name="reason" value="" checked><span>選ばない</span></label><label><input type="radio" name="reason" value="決められない"><span>決められない</span></label><label><input type="radio" name="reason" value="情報不足"><span>情報不足</span></label><label><input type="radio" name="reason" value="時間不足"><span>時間不足</span></label><label><input type="radio" name="reason" value="相手待ち"><span>相手待ち</span></label><label><input type="radio" name="reason" value="手を広げすぎ"><span>手を広げすぎ</span></label><label><input type="radio" name="reason" value="その他"><span>その他</span></label></div></fieldset>
+          <button class="primary" type="submit">次の一手をひとつ見つける <span aria-hidden="true">↗</span></button>
+          <p class="method">選択内容とキーワードから、固定の整理案を返します。</p>
+        </form>
+      </section>
+      <section class="result-card" aria-label="整理結果" aria-live="polite">
+        <div id="empty-result"><p class="card-eyebrow">YOUR NEXT STEP</p><div class="path-art" aria-hidden="true"><span class="path-dot"></span><span class="path-line"></span><span class="path-end">↗</span></div><h2>全部、解決しなくていい。</h2><p>止まっている場所が見えたら、<br>動かせる部分をひとつだけ。</p><div class="empty-foot">止まりポイント <span>→</span> 次の一手</div></div>
+        <div id="result" hidden><p class="card-eyebrow">YOUR NEXT STEP <span id="domain-label"></span></p><h2 class="result-title" tabindex="-1">来週は、ここから。</h2><div class="summary-block"><h3>止まりポイント</h3><p id="summary"></p><p class="quote" id="quote"></p><span id="basis"></span></div><div class="action-block"><span class="one">1</span><div><h3>次の一手</h3><p id="action"></p></div></div><p class="boundary" id="boundary"></p><div class="result-actions"><button type="button" id="copy">結果をコピー</button><button type="button" id="reset">入力を消してやり直す</button></div><p id="copy-status" role="status"></p><p class="result-note">整理のたたき台です。状況に合う範囲で使ってください。</p></div>
+      </section>
+    </div>
+  </main>
+  <footer><span>止まりポイント整理｜1問リフレクター</span><span>無料 · ログイン不要 · ブラウザ内で完結</span></footer>
+</div>
+</body></html>
